@@ -269,62 +269,70 @@ function SimpleBarChart({ data }: { data: any[] }) {
   const maxValue = Math.max(...data.map(d => d.rank1 + d.rank2 + d.rank3));
   
   return (
-    <div style={{display: 'flex', alignItems: 'end', height: '300px', gap: '3rem', padding: '3rem 2rem 2rem 2rem'}}>
-      {data.map((item, index) => {
-        const total = item.rank1 + item.rank2 + item.rank3;
-        const height1 = (item.rank1 / maxValue) * 220;
-        const height2 = (item.rank2 / maxValue) * 220;
-        const height3 = (item.rank3 / maxValue) * 220;
-        
-        return (
-          <div key={item.name} style={{display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1}}>
-            <div style={{display: 'flex', flexDirection: 'column-reverse', alignItems: 'center', height: '220px', width: '80px'}}>
-              <div style={{
-                width: '100%',
-                height: `${height3}px`,
-                backgroundColor: '#dc2626',
-                borderRadius: '4px 4px 0 0',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: 'white',
-                fontSize: '0.75rem',
-                fontWeight: '500'
-              }}>
-                {item.rank3 > 0 ? '3rd' : ''}
+    <div style={{
+      display: 'flex', 
+      alignItems: 'center', 
+      justifyContent: 'center',
+      height: '100%', 
+      padding: '2rem'
+    }}>
+      <div style={{display: 'flex', alignItems: 'end', gap: '3rem'}}>
+        {data.map((item, index) => {
+          const total = item.rank1 + item.rank2 + item.rank3;
+          const height1 = (item.rank1 / maxValue) * 200;
+          const height2 = (item.rank2 / maxValue) * 200;
+          const height3 = (item.rank3 / maxValue) * 200;
+          
+          return (
+            <div key={item.name} style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+              <div style={{display: 'flex', flexDirection: 'column-reverse', alignItems: 'center', height: '200px', width: '80px'}}>
+                <div style={{
+                  width: '100%',
+                  height: `${height3}px`,
+                  backgroundColor: '#dc2626',
+                  borderRadius: '4px 4px 0 0',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'white',
+                  fontSize: '0.75rem',
+                  fontWeight: '500'
+                }}>
+                  {item.rank3 > 0 ? '3rd' : ''}
+                </div>
+                <div style={{
+                  width: '100%',
+                  height: `${height2}px`,
+                  backgroundColor: '#d97706',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'white',
+                  fontSize: '0.75rem',
+                  fontWeight: '500'
+                }}>
+                  {item.rank2 > 0 ? '2nd' : ''}
+                </div>
+                <div style={{
+                  width: '100%',
+                  height: `${height1}px`,
+                  backgroundColor: '#059669',
+                  borderRadius: '0 0 4px 4px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'white',
+                  fontSize: '0.75rem',
+                  fontWeight: '500'
+                }}>
+                  {item.rank1 > 0 ? '1st' : ''}
+                </div>
               </div>
-              <div style={{
-                width: '100%',
-                height: `${height2}px`,
-                backgroundColor: '#d97706',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: 'white',
-                fontSize: '0.75rem',
-                fontWeight: '500'
-              }}>
-                {item.rank2 > 0 ? '2nd' : ''}
-              </div>
-              <div style={{
-                width: '100%',
-                height: `${height1}px`,
-                backgroundColor: '#059669',
-                borderRadius: '0 0 4px 4px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: 'white',
-                fontSize: '0.75rem',
-                fontWeight: '500'
-              }}>
-                {item.rank1 > 0 ? '1st' : ''}
-              </div>
+              <div style={{marginTop: '1.5rem', fontWeight: '500', fontSize: '1rem'}}>{item.name}</div>
             </div>
-            <div style={{marginTop: '1.5rem', fontWeight: '500', fontSize: '1rem'}}>{item.name}</div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   );
 }
