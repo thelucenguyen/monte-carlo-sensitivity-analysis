@@ -269,16 +269,16 @@ function SimpleBarChart({ data }: { data: any[] }) {
   const maxValue = Math.max(...data.map(d => d.rank1 + d.rank2 + d.rank3));
   
   return (
-    <div style={{display: 'flex', alignItems: 'end', height: '300px', gap: '2rem', padding: '2rem'}}>
+    <div style={{display: 'flex', alignItems: 'end', height: '300px', gap: '3rem', padding: '3rem 2rem 2rem 2rem'}}>
       {data.map((item, index) => {
         const total = item.rank1 + item.rank2 + item.rank3;
-        const height1 = (item.rank1 / maxValue) * 250;
-        const height2 = (item.rank2 / maxValue) * 250;
-        const height3 = (item.rank3 / maxValue) * 250;
+        const height1 = (item.rank1 / maxValue) * 220;
+        const height2 = (item.rank2 / maxValue) * 220;
+        const height3 = (item.rank3 / maxValue) * 220;
         
         return (
           <div key={item.name} style={{display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1}}>
-            <div style={{display: 'flex', flexDirection: 'column-reverse', alignItems: 'center', height: '250px', width: '80px'}}>
+            <div style={{display: 'flex', flexDirection: 'column-reverse', alignItems: 'center', height: '220px', width: '80px'}}>
               <div style={{
                 width: '100%',
                 height: `${height3}px`,
@@ -321,7 +321,7 @@ function SimpleBarChart({ data }: { data: any[] }) {
                 {item.rank1 > 0 ? '1st' : ''}
               </div>
             </div>
-            <div style={{marginTop: '1rem', fontWeight: '500', fontSize: '1rem'}}>{item.name}</div>
+            <div style={{marginTop: '1.5rem', fontWeight: '500', fontSize: '1rem'}}>{item.name}</div>
           </div>
         );
       })}
