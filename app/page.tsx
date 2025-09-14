@@ -76,10 +76,10 @@ const MonteCarloAnalysis = () => {
   };
 
   // Calculate rank distribution for visualization
-  const getRankDistribution = () => {
+  const getRankDistribution = (): RankDistribution[] => {
     if (results.length === 0) return [];
     
-    const distribution = alternativeNames.map(name => ({
+    const distribution: RankDistribution[] = alternativeNames.map(name => ({
       name,
       rank1: 0,
       rank2: 0,
@@ -89,7 +89,10 @@ const MonteCarloAnalysis = () => {
     results.forEach(result => {
       alternativeNames.forEach((name, index) => {
         const rank = result.ranks[index];
-        distribution[index][`rank${rank}` as keyof typeof distribution[0]]++;
+        if (rank >= 1 && rank <= 3) {
+          const key = `rank${rank}` as keyof Omit<RankDistribution, 'name'>;
+          distribution[index][key]++;
+        }
       });
     });
     
